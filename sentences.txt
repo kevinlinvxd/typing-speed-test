@@ -1,7 +1,7 @@
 Most animals can walk forward, backwards, and sideways.
-However, some animals cannot walk backwards, such as kangaroos and emus.
-Water intoxication happens when you drink too much water without enough minerals.
-This means you can get tea poisoning, which can cause side effects like muscle cramps and blurred vision.
-The Olympic games have around 205 countries participating and first started in 1896.
-My name is Kevin, and I'm currently a third year Computer Engineering student at Iowa State University.
-I'm looking to obtain a Software Engineering Internship for Summer of 2022.
+Some animals cannot walk backwards, such as kangaroos.
+Tea poisoning can cause side effects like muscle cramps.
+The Olympic games have around 205 countries participating.
+My name is Kevin. I'm a junior in majoring in Computer Engineering.
+I currently attend Iowa State University.
+I'm looking to obtain a SWE Internship for Summer of 2022.

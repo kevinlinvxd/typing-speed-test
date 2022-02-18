@@ -7,8 +7,8 @@ import random
 
 class Game:
     def __init__(self):
-        self.width = 750
-        self.height = 500
+        self.width = 1000
+        self.height = 600
         self.reset = True
         self.active = False
         self.input_text = ''
@@ -27,12 +27,12 @@ class Game:
         self.open_img = pygame.image.load('startup.jpg')
         self.open_img = pygame.transform.scale(self.open_img, (self.width, self.height))
         self.bg = pygame.image.load('background.jpg')
-        self.bg = pygame.transform.scale(self.bg, (500, 750))
+        self.bg = pygame.transform.scale(self.bg, (600, 1000))
         self.screen = pygame.display.set_mode((self.width, self.height))
         pygame.display.set_caption('Typing Speed Test')
 
     def draw_text(self, screen, message, y, font_size, color):
-        font = pygame.font.Font(None, font_size)
+        font = pygame.font.SysFont("trebuchet ms", font_size)
         text = font.render(message, True, color)
         text_rect = text.get_rect(center=(self.width / 2, y))
         screen.blit(text, text_rect)
@@ -58,7 +58,7 @@ class Game:
         self.start_time = 0
         self.total_time = 0
         self.wpm = 0
-        self.random_sentence = self.get_sentence
+        self.random_sentence = self.get_sentence()
         if not self.random_sentence:
             self.reset_test()
 
@@ -66,19 +66,18 @@ class Game:
         self.screen.blit(self.bg, (0, 0))
         message = 'Typing Speed Test'
         self.draw_text(self.screen, message, 80, 80, self.HEAD_C)
-        pygame.draw.rect(self.screen, (255, 192, 25), (50, 250, 650, 50), 2)
-
+        pygame.draw.rect(self.screen, (255, 192, 25), (60, 250, 900, 50), 2)
         self.draw_text(self.screen, self.random_sentence, 200, 28, self.TEXT_C)
         pygame.display.update()
 
-    def run(self):  # TODO
+    def run(self):
         self.reset_test()
         self.running = True
         while self.running:
             clock = pygame.time.Clock()
             self.screen.fill((0, 0, 0), (50, 250, 650, 50))
-            pygame.draw.rect(self.screen, self.HEAD_C, (50, 250, 650, 50), 2)
-            self.draw_text(self.screen, self.input_text, 274, 26, (250, 250, 250))
+            pygame.draw.rect(self.screen, self.HEAD_C, (60, 250, 900, 50), 2)
+            self.draw_text(self.screen, self.input_text, 274, 28, self.TEXT_C)
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -108,6 +107,8 @@ class Game:
                         else:
                             try:
                                 self.input_text += event.unicode
+                                # if self.screen.get_width() > 880:
+                                #   self.input_text = self.input_text[:-1]
                             except:
                                 pass
             pygame.display.update()
@@ -129,15 +130,13 @@ class Game:
             self.end = True
             print(self.total_time)
 
-            self.results = 'Time:' + str(round(self.total_time)) + " secs   Accuracy:" + str(
-                round(self.accuracy)) + "%" + '   Wpm: ' + str(round(self.wpm))
+            self.results = 'Time:' + str(round(self.total_time)) + ' secs   Accuracy:' + str(
+                round(self.accuracy)) + '%' + '   WPM: ' + str(round(self.wpm))
 
-            self.time_img = pygame.image.load('icon.png')
+            self.time_img = pygame.image.load('refresh-svgrepo-com.svg')
             self.time_img = pygame.transform.scale(self.time_img, (150, 150))
-            screen.blit(self.time_img, (self.w / 2 - 75, self.h - 140))
-            self.draw_text(screen, "Reset", self.h - 70, 26, (100, 100, 100))
-
-            print(self.results)
+            screen.blit(self.time_img, (self.width / 2 - 75, self.height - 140))
+            self.draw_text(screen, 'Reset', self.height - 70, 26, (100, 100, 100))
             pygame.display.update()
 
 
