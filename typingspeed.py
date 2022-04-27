@@ -66,7 +66,7 @@ class Game:
         self.screen.blit(self.bg, (0, 0))
         message = 'Typing Speed Test'
         self.draw_text(self.screen, message, 80, 80, self.HEAD_C)
-        pygame.draw.rect(self.screen, (255, 192, 25), (60, 250, 900, 50), 2)
+        pygame.draw.rect(self.screen, (255, 192, 25), (60, 250, 900, 50), 3)
         self.draw_text(self.screen, self.random_sentence, 200, 28, self.TEXT_C)
         pygame.display.update()
 
@@ -76,7 +76,7 @@ class Game:
         while self.running:
             clock = pygame.time.Clock()
             self.screen.fill((0, 0, 0), (50, 250, 650, 50))
-            pygame.draw.rect(self.screen, self.HEAD_C, (60, 250, 900, 50), 2)
+            pygame.draw.rect(self.screen, self.HEAD_C, (60, 250, 900, 50), 3)
             self.draw_text(self.screen, self.input_text, 274, 28, self.TEXT_C)
             pygame.display.update()
             for event in pygame.event.get():
